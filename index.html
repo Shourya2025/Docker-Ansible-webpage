@@ -1,0 +1,436 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Love You ❤️</title>
+
+  <!-- Google Fonts -->
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg1: #ffecd2;
+      --bg2: #fcb69f;
+      --accent: #ff4d6d;
+      --accent-2: #ff9bb3;
+      --glass: rgba(255,255,255,0.12);
+      --card: rgba(255,255,255,0.18);
+      --shadow: 0 8px 30px rgba(0,0,0,0.18);
+      --radius: 18px;
+    }
+
+    *{box-sizing:border-box; margin:0; padding:0; -webkit-font-smoothing:antialiased;}
+    html,body{height:100%;}
+    body{
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(255,120,145,0.12), transparent),
+                  radial-gradient(900px 400px at 90% 90%, rgba(255,213,155,0.08), transparent),
+                  linear-gradient(135deg, var(--bg1), var(--bg2));
+      color:#111;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:40px;
+    }
+
+    .card{
+      width:min(1100px, 96vw);
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      box-shadow: var(--shadow);
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      backdrop-filter: blur(6px) saturate(1.1);
+    }
+
+    .ribbon {
+      position:absolute;
+      top:-60px;
+      left:-80px;
+      width: 280px;
+      height: 280px;
+      background: conic-gradient(from 180deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
+      transform: rotate(20deg);
+      filter: blur(20px);
+      opacity:0.6;
+      pointer-events:none;
+    }
+
+    .content{
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap: 28px;
+      align-items:stretch;
+    }
+
+    .left {
+      padding: 24px;
+    }
+
+    .hero {
+      display:flex;
+      gap:20px;
+      align-items:center;
+    }
+
+    .badge {
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-family: "Playfair Display", serif;
+      font-size:28px;
+      box-shadow: 0 10px 30px rgba(255,77,109,0.28);
+      transform: translateY(0);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float{
+      0% { transform: translateY(0) rotate(-2deg) }
+      50% { transform: translateY(-10px) rotate(2deg) }
+      100% { transform: translateY(0) rotate(-2deg) }
+    }
+
+    .headline {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(28px, 6vw, 54px);
+      line-height:1.02;
+      color: #fff;
+      text-shadow: 0 6px 18px rgba(255,77,109,0.28);
+    }
+
+    .sub {
+      color: rgba(255,255,255,0.9);
+      margin-top:10px;
+      font-weight:300;
+      max-width:60ch;
+    }
+
+    .cta-row{
+      margin-top:20px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+
+    .btn {
+      padding:10px 18px;
+      border-radius:999px;
+      border:none;
+      cursor:pointer;
+      font-weight:600;
+      background: linear-gradient(90deg,#fff 0%, rgba(255,255,255,0.92) 100%);
+      color: #ff4762;
+      box-shadow: 0 6px 18px rgba(255,77,109,0.12), inset 0 -6px 18px rgba(255,77,109,0.04);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .btn:active{ transform: translateY(2px) scale(.998); }
+    .ghost {
+      background: transparent;
+      color: rgba(255,255,255,0.95);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow:none;
+    }
+
+    .card-side {
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      padding:18px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.04);
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      align-items:stretch;
+    }
+
+    .message {
+      background: linear-gradient(120deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      padding:18px;
+      border-radius:12px;
+      font-size:18px;
+      color:#fff;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+
+    .hearts {
+      display:flex;
+      gap:8px;
+      margin-top:10px;
+      flex-wrap:wrap;
+    }
+
+    .heart {
+      width:48px;
+      height:48px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:12px;
+      background: linear-gradient(180deg,#fff, rgba(255,255,255,0.9));
+      padding:6px;
+      box-shadow: 0 8px 24px rgba(255,77,109,0.12);
+      animation: pop .9s infinite alternate;
+    }
+    .heart svg { width:28px; height:28px; fill: var(--accent); }
+
+    @keyframes pop {
+      from { transform: translateY(0) scale(1); }
+      to { transform: translateY(-8px) scale(1.06); }
+    }
+
+    .floating-heart {
+      position:absolute;
+      pointer-events:none;
+      user-select:none;
+      animation: floatUp linear infinite;
+      opacity:.95;
+    }
+    @keyframes floatUp {
+      from { transform: translateY(60vh) scale(0.6); opacity:0; }
+      10% { opacity:1; }
+      to { transform: translateY(-20vh) scale(1.1); opacity:0; }
+    }
+
+    .love {
+      margin-top:26px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(36px, 8vw, 96px);
+      letter-spacing: -2px;
+      color: #fff;
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+    .love .sparkle {
+      width:14px;height:14px;border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, #fff, rgba(255,255,255,0.9) 30%, transparent 60%);
+      box-shadow: 0 8px 18px rgba(255,140,160,0.14);
+      transform:translateY(-6px);
+      animation: twinkle 2s infinite ease-in-out;
+    }
+    @keyframes twinkle {
+      0%{ transform:scale(.9) rotate(6deg) translateY(-6px); opacity:.9 }
+      50%{ transform:scale(1.2) rotate(-6deg) translateY(-2px); opacity:1 }
+      100%{ transform:scale(.9) rotate(6deg) translateY(-6px); opacity:.9 }
+    }
+
+    footer {
+      margin-top:18px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      font-size:14px;
+      color:rgba(255,255,255,0.85);
+    }
+
+    @media (max-width:920px){
+      .content{ grid-template-columns: 1fr; }
+      .card-side{ order: -1; }
+      .hero{ flex-direction:column; align-items:flex-start; gap:14px; }
+      .badge{ width:96px;height:96px;font-size:22px; }
+    }
+  </style>
+
+</head>
+<body>
+
+  <div class="card" role="main" aria-label="Love message card">
+    <div class="ribbon" aria-hidden="true"></div>
+
+```
+<div class="content">
+  <div class="left">
+    <div class="hero" aria-hidden="false">
+      <div class="badge" aria-hidden="true">♥</div>
+
+      <div>
+        <h1 class="headline">For the one who makes my heart skip — <span style="color:#fff">Love You</span></h1>
+        <p class="sub">A little page to remind you that your smile brightens my days. Open your heart, take a breath, and read this tiny love note made just for you. 💌</p>
+
+        <div class="cta-row">
+          <button class="btn" id="confettiBtn" aria-pressed="false">Celebrate ✨</button>
+          <button class="btn ghost" id="musicBtn" aria-pressed="false">Play a Song ▶</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="love" aria-hidden="false">
+      <span style="font-size:0.6em; color: rgba(255,255,255,0.9)">•</span>
+      <span>LOVE YOU</span>
+      <span class="sparkle" aria-hidden="true"></span>
+    </div>
+
+    <section style="margin-top:20px; color:rgba(255,255,255,0.95);">
+      <div class="message" role="article">
+        <h3 style="margin-bottom:8px; font-family: Playfair Display, serif; color:#fff;">A tiny love letter</h3>
+        <p style="opacity:.95; line-height:1.6; font-size:16px;">
+          I wanted to craft something warm, soft and joyful — like the feeling you leave behind. If this page were a hug, it would be the long warm kind. If it were a song, it would be the one that plays on repeat.
+        </p>
+        <div class="hearts" aria-hidden="true">
+          <div class="heart"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.333-8-10.667C4 6.58 7.58 3 12 6c4.42-3 8 0.58 8 4.333C20 15.667 12 21 12 21z"/></svg></div>
+          <div class="heart"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.333-8-10.667C4 6.58 7.58 3 12 6c4.42-3 8 0.58 8 4.333C20 15.667 12 21 12 21z"/></svg></div>
+          <div class="heart"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.333-8-10.667C4 6.58 7.58 3 12 6c4.42-3 8 0.58 8 4.333C20 15.667 12 21 12 21z"/></svg></div>
+        </div>
+      </div>
+
+      <p style="margin-top:14px; color:rgba(255,255,255,0.88); font-weight:500;">Little extras: soft animations, tiny floating hearts, and a confetti sprinkle — press celebrate for a surprise.</p>
+    </section>
+  </div>
+
+  <aside class="card-side" aria-label="Side panel">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <strong style="color:#fff; font-size:18px;">Sweet Notes</strong>
+      <small style="opacity:.7">Made with care</small>
+    </div>
+
+    <div style="display:grid; gap:8px; margin-top:8px;">
+      <div style="display:flex; gap:8px; align-items:center;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-8-5.333-8-10.667C4 6.58 7.58 3 12 6c4.42-3 8 0.58 8 4.333C20 15.667 12 21 12 21z" fill="#ffb3c1"/></svg>
+        <div>
+          <div style="font-weight:600; color:#fff">You are my favorite</div>
+          <div style="font-size:13px; opacity:.8">Better than the best day</div>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:8px; align-items:center;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="#ffd3da" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div>
+          <div style="font-weight:600; color:#fff">Always here</div>
+          <div style="font-size:13px; opacity:.8">No matter the distance</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:auto; text-align:center;">
+      <small style="opacity:.9; display:block; margin-bottom:8px;">A tiny animation for you</small>
+      <div style="height:120px; display:flex; align-items:center; justify-content:center;">
+        <svg viewBox="0 0 200 200" width="160" height="120" aria-hidden="true">
+          <defs>
+            <linearGradient id="g" x1="0" x2="1">
+              <stop offset="0" stop-color="#ff7a8a"/>
+              <stop offset="1" stop-color="#ffb3c1"/>
+            </linearGradient>
+          </defs>
+          <g transform="translate(100,100)">
+            <path d="M -40 0 C -40 -40 40 -40 40 0 C 40 40 -40 40 -40 0 Z" fill="url(#g)" opacity="0.95">
+              <animate attributeName="transform" dur="6s" repeatCount="indefinite" values="translate(0,0) rotate(0) ; translate(0,-8) rotate(6) ; translate(0,0) rotate(0)"/>
+            </path>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div>Made with lots of ❤️</div>
+  <div style="opacity:.9">— Shourya</div>
+</footer>
+
+<div id="floating"></div>
+```
+
+  </div>
+
+  <!-- Confetti script & simple audio -->
+
+<audio id="song" src="https://cdn.simple-music.example/sample.mp3" preload="none" aria-hidden="true"></audio>
+
+  <script>
+    const floating = document.getElementById('floating');
+    function spawnHeart(delay = 0, left = 50, size = 40, hue = 340) {
+      const el = document.createElement('div');
+      el.className = 'floating-heart';
+      el.style.left = left + '%';
+      el.style.width = size + 'px';
+      el.style.height = size + 'px';
+      el.style.bottom = '-10vh';
+      el.style.opacity = Math.random() * 0.9 + 0.2;
+      el.style.animationDuration = (6 + Math.random()*6) + 's';
+      el.style.animationDelay = delay + 's';
+      el.innerHTML = `<svg viewBox="0 0 24 24" style="width:100%;height:100%"><path fill="hsl(${hue} 80% 60%)" d="M12 21s-8-5.333-8-10.667C4 6.58 7.58 3 12 6c4.42-3 8 0.58 8 4.333C20 15.667 12 21 12 21z"/></svg>`;
+      floating.appendChild(el);
+      setTimeout(()=> el.remove(), 14000);
+    }
+
+    for(let i=0;i<6;i++){
+      spawnHeart(i*0.6, 12 + i*13, 34 + (i%3)*10, 340 - i*6);
+    }
+    setInterval(()=> spawnHeart(0, 10 + Math.random()*80, 24 + Math.random()*40, 330 + Math.random()*30), 2600);
+
+    function fireConfetti() {
+      const c = document.createElement('canvas');
+      c.style.position='fixed'; c.style.left=0; c.style.top=0; c.style.pointerEvents='none';
+      c.width = innerWidth; c.height = innerHeight; c.id='confettiCanvas';
+      document.body.appendChild(c);
+      const ctx = c.getContext('2d'), pieces = [];
+      for(let i=0;i<120;i++){
+        pieces.push({
+          x: Math.random()*c.width,
+          y: Math.random()*-c.height,
+          w: 6 + Math.random()*10,
+          h: 6 + Math.random()*10,
+          vx: -2 + Math.random()*4,
+          vy: 2 + Math.random()*6,
+          color: `hsl(${Math.random()*360} 80% 62%)`,
+          rot: Math.random()*360, vr: -3 + Math.random()*6
+        });
+      }
+      let t = 0;
+      function draw(){
+        ctx.clearRect(0,0,c.width,c.height);
+        for(const p of pieces){
+          p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+          ctx.save();
+          ctx.translate(p.x,p.y);
+          ctx.rotate(p.rot * Math.PI/180);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+          ctx.restore();
+        }
+        t++;
+        if(t>200){ document.body.removeChild(c); clearInterval(loop); }
+      }
+      const loop = setInterval(draw, 16);
+    }
+
+    const confettiBtn = document.getElementById('confettiBtn');
+    confettiBtn.addEventListener('click', ()=> {
+      fireConfetti();
+      confettiBtn.animate([{transform:'scale(1)'},{transform:'scale(1.06)'},{transform:'scale(1)'}], {duration:420, easing:'ease-out'});
+    });
+
+    const musicBtn = document.getElementById('musicBtn');
+    const audio = document.getElementById('song');
+    let playing=false;
+    musicBtn.addEventListener('click', async ()=> {
+      if(!playing){
+        try{
+          await audio.play();
+          playing=true; musicBtn.textContent='Pause ▶';
+        } catch(e){
+          musicBtn.textContent='Play Song ▶';
+          alert('Browser blocked autoplay — click Allow or press the button again to start music.');
+        }
+      } else {
+        audio.pause(); playing=false; musicBtn.textContent='Play a Song ▶';
+      }
+    });
+
+    document.addEventListener('keydown', (e)=>{
+      if(e.key.toLowerCase()==='c') confettiBtn.click();
+      if(e.key.toLowerCase()==='m') musicBtn.click();
+    });
+  </script>
+
+</body>
+</html>
